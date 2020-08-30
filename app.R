@@ -181,7 +181,7 @@ server <- function(input, output, session) {
                                   selected="Country.of.Origin"),
                       
                       selectInput(inputId="period",
-                                  label="Choose a time period",
+                                  label="Time frequency",
                                   choices=c("Daily", "Weekly", "Monthly", "Annually"),
                                   selected="Daily"))
     } else if (input$tab == "world_map") {
