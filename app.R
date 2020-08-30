@@ -170,7 +170,7 @@ server <- function(input, output, session) {
     if (input$tab == "general") {
       dyn_ui <- list(sliderInput(inputId="max.no.cat",
                                  label="Maximum number of categories",
-                                 min=1,
+                                 min=2,
                                  max=10,
                                  value=3,
                                  ticks=FALSE),
@@ -252,8 +252,8 @@ server <- function(input, output, session) {
   observe({
     if (!is.null(input$column)) {
       updateSliderInput(session, "max.no.cat",
-                        max=length(unique(fsa_data[, full.stop.replace(input$column)])),
-                        value=min(c(10, length(unique(fsa_data[, full.stop.replace(input$column)])))))
+                        max=length(na.omit(unique(fsa_data[, full.stop.replace(input$column)]))),
+                        value=min(c(10, length(na.omit(unique(fsa_data[, full.stop.replace(input$column)]))))))
     }
   })
   
